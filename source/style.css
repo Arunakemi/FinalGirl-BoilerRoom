@@ -48,6 +48,7 @@
     border-width: 0.2dvh;
     border-color: rgba(255, 255, 255, 0.1);
     border-style: solid;
+    transition-duration: 0.5s;
 }
 #boilerCards
 {
