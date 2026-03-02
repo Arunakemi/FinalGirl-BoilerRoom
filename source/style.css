@@ -16,8 +16,8 @@
 {
     position: absolute;
     color: white;
-    top: 0;
-    left: 0;
+    top: 1%;
+    left: 1%;
     opacity: 0.8;
     font-size: 1.5dvh;
     z-index: 999999;
@@ -85,14 +85,18 @@
     vertical-align: middle;
     justify-content: center;
     z-index: 11000;
-    
-    
 }
 @media (max-aspect-ratio: 1.1) and (orientation: portrait) {
     #buttons
     {
-        left: 0%;
-        width: 100%;
+        left: 0% !important;
+        width: 100% !important;
+    }
+    .bttn
+    {
+        padding-top: 0.6dvh !important;
+        padding-bottom: 0.6dvh !important;
+        margin-bottom: 0.1dvh !important;
     }
 }
 .bttn
