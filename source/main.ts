@@ -3,7 +3,24 @@
         LAST UPDATE: 02/March/2026
     ************************************************************************************************* */ 
 
-
+// Utils
+const DIRS = [
+    { x: 0, y: 1},
+    { x: -1, y: 0},
+    { x: 0, y: -1},
+    { x: 1, y: 0},
+]
+const Hide = (e : HTMLElement)=>{
+    e.style.display = 'none'
+}
+const Show = (e : HTMLElement)=>{
+    e.style.display = 'block'
+}
+const NewCoordElem = (e : HTMLElement) => ({
+    element: e,
+    x: 0,
+    y: 0,
+})
 // Fisher-Yates Shuffle
 // Taken from: https://stackoverflow.com/questions/59810241/how-to-fisher-yates-shuffle-a-javascript-array
 const Shuffle = (arr : any[]) => {
@@ -15,35 +32,17 @@ const Shuffle = (arr : any[]) => {
     arr[i] = temp;
   }
 }
-// Utils
-const DIRS = [
-    { x: 0, y: 1},
-    { x: -1, y: 0},
-    { x: 0, y: -1},
-    { x: 1, y: 0},
-]
-const Hide = (e : HTMLElement)=>{
-    e.style.visibility = 'hidden'
-}
-const Show = (e : HTMLElement)=>{
-    e.style.visibility = 'visible'
-}
-const newCoordElem = (e : HTMLElement) => ({
-    element: e,
-    x: 0,
-    y: 0,
-})
 
 // HTML References
-let cardSleep = newCoordElem(document.getElementById("cardSleep") as HTMLImageElement)
+let cardSleep = NewCoordElem(document.getElementById("cardSleep") as HTMLImageElement)
 let cardAwake = document.getElementById("cardAwake") as HTMLImageElement
 cardAwake.style.zIndex = '9500'
 cardSleep.element.style.zIndex = '9000'
 let cards = [
-    newCoordElem(document.getElementById("card01") as HTMLImageElement),
-    newCoordElem(document.getElementById("card02") as HTMLImageElement),
-    newCoordElem(document.getElementById("card03") as HTMLImageElement),
-    newCoordElem(document.getElementById("card04") as HTMLImageElement)
+    NewCoordElem(document.getElementById("card01") as HTMLImageElement),
+    NewCoordElem(document.getElementById("card02") as HTMLImageElement),
+    NewCoordElem(document.getElementById("card03") as HTMLImageElement),
+    NewCoordElem(document.getElementById("card04") as HTMLImageElement)
 ]
 let bttnDir = [ 
     document.getElementById("bttnUp") as HTMLButtonElement, 
@@ -54,8 +53,10 @@ let bttnDir = [
 let bttnSleep = document.getElementById("bttnSleep") as HTMLButtonElement
 let bttnWake = document.getElementById("bttnWake") as HTMLButtonElement
 
+// Main vars
 let cardIndex = 0
-let lastDir = 0
+
+// Functionality
 const TransformCards = ()=>{
     console.log('transforming')
     cardSleep.element.style.transform = `translate(${cardSleep.x * 50}%,${cardSleep.y * 50}%)`
@@ -65,26 +66,21 @@ const TransformCards = ()=>{
     }
 }
 const Sleep = () => {
-
+    Hide(bttnSleep)
+    Hide(cardAwake)
     Shuffle(cards)
     for(let i=0; i<cards.length; i++)
     { cards[i].element.style.zIndex = 1000 - i * 100 + '' }
     cardIndex = 0
-    lastDir = 0
-
-    Hide(bttnSleep)
-    Hide(cardAwake)
     for(let i=0;i<bttnDir.length;i++)
     { Show(bttnDir[i]) }
     Show(cardSleep.element)
-
     for(let i=0;i<bttnDir.length;i++)
     {
         bttnDir[i].disabled = false
     }
 }
 const WakeUp = () => {
-
     cardSleep.x = 0
     cardSleep.y = 0
     for(let i=0; i<cards.length; i++)
@@ -93,10 +89,8 @@ const WakeUp = () => {
         cards[i].y = 0 
     }
     TransformCards()
-
     Hide(cardSleep.element)
     Hide(bttnWake)
-
     Show(bttnSleep)
     Show(cardAwake)
 }
@@ -109,12 +103,9 @@ const CheckifInvalid = (dir : {x:number,y:number}) => {
     }
     return isInvalid
 }
-
 const Move = (dir : number)=>{
-
     let x = DIRS[dir].x
     let y = DIRS[dir].y
-
     cardSleep.x += x
     cardSleep.y += y
     for(let i=0; i<cardIndex; i++)
@@ -123,12 +114,10 @@ const Move = (dir : number)=>{
         cards[i].y += y
     }
     TransformCards()
-
     for(let i=0;i<bttnDir.length;i++)
     {
         bttnDir[i].disabled = CheckifInvalid(DIRS[i])
     }
-
     cardIndex++
     if(cardIndex >= cards.length)
     {
@@ -137,12 +126,16 @@ const Move = (dir : number)=>{
         Show(bttnWake)
     }
 }
+
+// Connect events
 bttnSleep.onclick = Sleep
 bttnWake.onclick = WakeUp
 for(let i=0;i<bttnDir.length;i++)
 {
     bttnDir[i].onclick = ()=>{ Move(i) }
 }
+
+// On load Setup
 for(let i=0;i<bttnDir.length;i++)
 { Hide(bttnDir[i]) }
 WakeUp()

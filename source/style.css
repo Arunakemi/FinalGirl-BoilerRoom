@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'dropdead';
-    src: url(Hanoded-DropDeadGorgeous.woff) format('woff');
+    src: url(/Hanoded-DropDeadGorgeous.woff) format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -45,7 +45,7 @@
     top: 10%;
     height: 80%;
     border-radius: 3dvh;
-    border-width: 0.2dvh;
+    border-width: 0.25dvh;
     border-color: rgba(255, 255, 255, 0.1);
     border-style: solid;
     transition-duration: 0.5s;
