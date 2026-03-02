@@ -1,0 +1,106 @@
+@font-face {
+    font-family: 'dropdead';
+    src: url(/Hanoded-DropDeadGorgeous.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    margin: 0;
+    box-sizing: border-box;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-family: 'dropdead';
+}
+.credits
+{
+    position: absolute;
+    color: white;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    font-size: 1.5dvh;
+    z-index: 999999;
+}
+.credits a 
+{
+    color: aqua;
+}
+#main {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #3c3c3c;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -10;
+}
+.card
+{
+    position: absolute;
+    top: 10%;
+    height: 80%;
+    border-radius: 3dvh;
+    border-width: 0.2dvh;
+    border-color: rgba(255, 255, 255, 0.1);
+    border-style: solid;
+}
+#boilerCards
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80%;
+    width: 100%;
+    background-color: #3c3c3c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.blackBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 20%;
+    width: 100%;
+    background-color: #303030;
+    z-index: 10000;
+}
+#buttons
+{
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    height: 20%;
+    width: 50%;
+    background-color: #303030;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    z-index: 11000;
+}
+@media (max-aspect-ratio: 1.1) and (orientation: portrait) {
+    #buttons
+    {
+        left: 0%;
+        width: 100%;
+    }
+}
+.bttn
+{
+    font-size: 2dvh;
+    width: 80%;
+    margin-bottom: 0.2dvh;
+}
+#bttnSleep {
+    position: absolute;
+}
+#bttnWake {
+    position: absolute;
+}
