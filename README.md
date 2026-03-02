@@ -1,4 +1,4 @@
-UNOFFICIAL Boiler Room v0.1
+UNOFFICIAL Boiler Room v1.0
 
 This is a fanmade app not endorsed or affiliated with VRG
 
