@@ -58,7 +58,6 @@ let cardIndex = 0
 
 // Functionality
 const TransformCards = ()=>{
-    console.log('transforming')
     cardSleep.element.style.transform = `translate(${cardSleep.x * 50}%,${cardSleep.y * 50}%)`
     for(let i=0; i<cards.length; i++)
     { 
@@ -95,7 +94,6 @@ const WakeUp = () => {
     Show(cardAwake)
 }
 const CheckifInvalid = (dir : {x:number,y:number}) => {
-    console.log('checking')
     let isInvalid = cardSleep.x + dir.x == 0 && cardSleep.y + dir.y == 0
     for(let i=0; i<cardIndex; i++)
     {
