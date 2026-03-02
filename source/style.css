@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'dropdead';
-    src: url(/Hanoded-DropDeadGorgeous.woff) format('woff');
+    src: url(Hanoded-DropDeadGorgeous.woff) format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -85,6 +85,8 @@
     vertical-align: middle;
     justify-content: center;
     z-index: 11000;
+    
+    
 }
 @media (max-aspect-ratio: 1.1) and (orientation: portrait) {
     #buttons
@@ -98,6 +100,8 @@
     font-size: 2dvh;
     width: 80%;
     margin-bottom: 0.2dvh;
+    padding-top: 0.5dvh;
+    padding-bottom: 0.5dvh;
 }
 #bttnSleep {
     position: absolute;
